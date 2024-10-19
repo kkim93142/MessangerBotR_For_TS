@@ -71,9 +71,5 @@ export type ImageType = {
     /**
      * Returns the message sender's profile picture as android.graphic.Bitmap instance.
      */
-    getBitmap: () => ImageBitmap
+    getBitmap: () => android.graphics.Bitmap
 };
-/**
- * @deprecated This type is not defined. Do not use this.
- */
-export type ImageBitmap = never;
