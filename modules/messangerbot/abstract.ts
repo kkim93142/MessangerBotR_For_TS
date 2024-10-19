@@ -1,4 +1,4 @@
-export let Abstract = function(): never {
+export const Abstract = function(): never {
     throw new Error("Not implemented.");
 };
 
