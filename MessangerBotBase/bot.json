@@ -1,8 +1,0 @@
-{
-    "main": "implement.js",
-    "option": {
-        "apiLevel": 2,
-        "useConsoleApi": true,
-        "useBabel": false
-    }
-}
