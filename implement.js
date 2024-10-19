@@ -60,4 +60,3 @@ bot.setCommandPrefix("/");
 try { Jsoup.connect("http://google.com"); } catch (error) {};
 
 require("index");
-require("test");

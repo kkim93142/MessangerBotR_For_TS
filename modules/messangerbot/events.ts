@@ -172,4 +172,18 @@ export namespace events {
     export const restart = new Event<(activity: any) => void>();
     export const destroy = new Event<(activity: any) => void>();
     export const backPressed = new Event<(activity: any) => void>();
+
+    /**
+     * Listen to a specific command only
+     * 
+     * @param specificCommand The command string to listen for
+     * @param listener The listener function to execute when the command matches
+     */
+    export function onSpecificCommand(specificCommand: string, listener: (command: CommandType) => void): void {
+        events.receiveCommand.on((command: CommandType) => {
+            if (command.command === specificCommand) {
+                listener(command);
+            }
+        });
+    }
 }
