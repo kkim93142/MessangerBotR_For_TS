@@ -1,17 +1,17 @@
-export enum LogColors {
-    white,
-    green,
-    red
+export enum LogTypes {
+    info,
+    debug,
+    error
 };
 
 export namespace GlobalLogger {
-    export function log(log: any, showToast: boolean, color: LogColors) {
+    export function log(log: any, showToast: boolean, logType: LogTypes) {
         //@ts-expect-error
-        if (color === LogColors.white) GlobalLog.info(log, showToast);
+        if (color === logType.info) GlobalLog.info(log, showToast);
         //@ts-expect-error
-        if (color === LogColors.green) GlobalLog.debug(log, showToast);
+        if (color === logType.debug) GlobalLog.debug(log, showToast);
         //@ts-expect-error
-        if (color === LogColors.red) GlobalLog.error(log, showToast);
+        if (color === logType.error) GlobalLog.error(log, showToast);
     };
 
     export function clear() {
