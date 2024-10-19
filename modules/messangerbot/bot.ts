@@ -1,3 +1,5 @@
+import { Abstract } from "./abstract";
+
 type AnyFunction = (this: any, ...args: any[]) => any;
 
 export class Bot {
@@ -9,12 +11,12 @@ export class Bot {
     /**
      * @returns if the compilation is successful.
      */
-    public compile(): boolean { return true; };
-    public getName(): string { return ""; };
+    public compile(): boolean { return Abstract(); };
+    public getName(): string { return Abstract(); };
     /**
      * Returns if the current bot is on.
      */
-    public getPower(): boolean { return true; };
+    public getPower(): boolean { return Abstract(); };
     public setPower(isOn: boolean): void {};
     /**
      * @deprecated If you need more events, just let me know.
@@ -23,7 +25,7 @@ export class Bot {
     /**
      * @param packageName Default value is last notification app's package name.
      */
-    public canReply(room: string, packageName: string = ""): boolean { return true; };
+    public canReply(room: string, packageName: string = ""): boolean { return Abstract(); };
     /**
      * @param packageName Default value is last notification app's package name.
      */
@@ -43,5 +45,5 @@ export class Bot {
     /**
      * @param packageName Default value is last notification app's package name.
      */
-    public send(room: string, message: string, packageName: string = ""): boolean { return true; };
+    public send(room: string, message: string, packageName: string = ""): boolean { return Abstract(); };
 }

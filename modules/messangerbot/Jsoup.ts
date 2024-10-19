@@ -1,3 +1,5 @@
+import { Abstract } from "./abstract";
+
 //@ts-expect-error
 const jsoup = org.jsoup.Jsoup;
 
@@ -11,7 +13,7 @@ class JsoupConnection {
     /**
      * @virtual Sorry, I'm too lazy to make other classes and virtual methods T.T
      */
-    public get(): Element {return new Element()};
+    public get(): Document { return Abstract(); };
 }
 
 /**
@@ -23,12 +25,22 @@ class Element {
      */
     constructor() {}
 
-    public html(): string { return ""; };
-    public text(): string { return ""; };
-    public tag(): any { return -1 };
-    public select(cssQuery: string): Element { return new Element(); };
-    public clone(cssQuery: string): Element { return new Element(); };
+    public html(): string { return Abstract(); };
+    public text(): string { return Abstract(); };
+    public tag(): any { return Abstract(); };
+    public select(cssQuery: string): Element { return Abstract(); };
+    public clone(cssQuery: string): Element { return Abstract(); };
+
     public attr(attributeKey: string, attributeValue: boolean): Element;
     public attr(attributeKey: string, attributeValue: string): Element;
-    public attr(attributeKey: string, attributeValue: boolean | string): Element { return new Element(); };
+    public attr(attributeKey: string, attributeValue: boolean | string): Element { return Abstract(); };
+
+    public val(): string { return Abstract(); };
+}
+
+class Document extends Element {
+    public clone(cssQuery: string): Document { return Abstract(); };
+    public body(): Element { return Abstract(); };
+    public head(): Element { return Abstract(); };
+    public title(): string { return Abstract(); };
 }
