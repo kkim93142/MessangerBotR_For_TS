@@ -1,5 +1,3 @@
-import { CommandType, UserType } from "messangerbot/types";
-
 export class Game {
     constructor(
         protected readonly commandObject: CommandType, 

@@ -1,14 +1,14 @@
 const bot = BotManager.getCurrentBot();
 
-const { events } = require("messangerbot/events");
-const { Jsoup } = require("messangerbot/Jsoup");
+const { events } = require("SDK/messangerbot/events");
+const Jsoup = org.jsoup.Jsoup;
 
 function _onMessage(msg) {
-    events.receiveMessage.fire(msg);
+    events.message.fire(msg);
 }
 
 function _onCommand(msg) {
-    events.receiveCommand.fire(msg);
+    events.command.fire(msg);
 }
 
 function _onCreate(savedInstanceState, activity) {
@@ -43,6 +43,15 @@ function _onBackPressed(activity) {
     events.backPressed.fire(activity);
 }
 
+function _onNotificationPosted(statusBarNotification, sessionManager) {
+    events.notificationPosted.fire(statusBarNotification, sessionManager);
+}
+
+function _onStartCompile() {
+    events.startCompile.fire();
+}
+
+
 bot.addListener(Event.Activity.CREATE, _onCreate);
 bot.addListener(Event.Activity.START, _onStart);
 bot.addListener(Event.Activity.RESUME, _onResume);
@@ -51,6 +60,8 @@ bot.addListener(Event.Activity.STOP, _onStop);
 bot.addListener(Event.Activity.RESTART, _onRestart);
 bot.addListener(Event.Activity.DESTROY, _onDestroy);
 bot.addListener(Event.Activity.BACK_PRESSED, _onBackPressed);
+bot.addListener(Event.Activity.NOTIFICATION_POSTED, _onNotificationPosted);
+bot.addListener(Event.Activity.START_COMPILE, _onStartCompile);
 bot.addListener(Event.MESSAGE, _onMessage);
 bot.addListener(Event.COMMAND, _onCommand);
 
