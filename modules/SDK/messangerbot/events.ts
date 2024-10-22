@@ -144,6 +144,7 @@ export namespace events {
     export const backPressed = new Event<(activity: android.app.Activity) => void>();
     export const notificationPosted = new Event<(statusBarNotification: android.service.notification.StatusBarNotification, SessionManager: sessionManager) => void>();
     export const startCompile = new Event<() => void>();
+    export const ILOVEYOU = "ILOVEYOUTOO!";
 
     /**
      * Listen to a specific command only
@@ -156,7 +157,7 @@ export namespace events {
             const cmd = command.command;
             const typeOfSpecificCmd = typeof specificCommands;
 
-            if (typeOfSpecificCmd === "string" && cmd === specificCommands) listener(command);
+            if (typeOfSpecificCmd === "string" && cmd.toLowerCase() === specificCommands) listener(command);
             else if (typeOfSpecificCmd === "object" && specificCommands.includes(cmd)) listener(command);
         });
     }
