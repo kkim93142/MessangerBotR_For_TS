@@ -1,5 +1,3 @@
-// These types are defined for MESSANGER BOT
-
 declare type MessageType = {
     /**
      * The whole message
@@ -29,33 +27,7 @@ declare type MessageType = {
     channelId: number,
 };
 
-declare type CommandType = {
-    /**
-     * The whole message
-     */
-    content: string,
-    /**
-     * The name of room
-     */
-    room: string,
-    /**
-     * Sender
-     */
-    author: UserType,
-    isGroupChat: boolean,
-    isDebugRoom: boolean,
-    packageName: string,
-    reply: (message: any) => void,
-    markAsRead: () => void,
-    /**
-     * ID of message
-     */
-    logId: number,
-    channelId: number,
-    /**
-     * @description Wrong grammar. Actually it's "hasMention".
-     */
-    isMention: boolean,
+declare type CommandType = MessageType & {
     command: string,
     args: string[],
 };

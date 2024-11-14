@@ -1,7 +1,6 @@
 const bot = BotManager.getCurrentBot();
 
 const { events } = require("SDK/messangerbot/events");
-const Jsoup = org.jsoup.Jsoup;
 
 function _onMessage(msg) {
     events.message.fire(msg);
@@ -68,6 +67,6 @@ bot.addListener(Event.COMMAND, _onCommand);
 bot.setCommandPrefix("/");
 
 //Initialize Jsoup. The first connection always throws error. So, I handle it.
-try { Jsoup.connect("http://google.com"); } catch (error) {};
+try { org.jsoup.Jsoup.connect("http://google.com"); } catch (error) {};
 
 require("index");

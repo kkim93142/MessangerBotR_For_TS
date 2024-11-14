@@ -142,15 +142,16 @@ export namespace events {
     export const restart = new Event<(activity: android.app.Activity) => void>();
     export const destroy = new Event<(activity: android.app.Activity) => void>();
     export const backPressed = new Event<(activity: android.app.Activity) => void>();
+    /**
+     * @warning Be careful when you use SessionManager. I'm not sure It's working!
+     */
     export const notificationPosted = new Event<(statusBarNotification: android.service.notification.StatusBarNotification, SessionManager: sessionManager) => void>();
     export const startCompile = new Event<() => void>();
     export const ILOVEYOU = "ILOVEYOUTOO!";
 
     /**
-     * Listen to a specific command only
-     * 
-     * @param specificCommand The command string to listen for
-     * @param listener The listener function to execute when the command matches
+     * Listen to a specific command(s) only
+     * @param listener You know! It's callback!
      */
     export function onSpecificCommands(specificCommands: string | string[], listener: (command: CommandType) => void): void {
         events.command.on((command: CommandType) => {

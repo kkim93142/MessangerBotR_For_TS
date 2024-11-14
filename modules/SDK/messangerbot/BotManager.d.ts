@@ -33,6 +33,7 @@ declare abstract class Bot {
     constructor();
 
     /**
+     * Reloads the bot that is running this codes.
      * @returns if the compilation is successful.
      */
     public abstract compile(): boolean;
@@ -42,9 +43,7 @@ declare abstract class Bot {
      */
     public abstract getPower(): boolean;
     public abstract setPower(isOn: boolean): void;
-    /**
-     * @deprecated If you need more events, just let me know.
-     */
+
     public abstract addListener(eventName: string, listener: AnyFunction): void;
     /**
      * @param packageName Default value is last notification app's package name.
@@ -56,11 +55,11 @@ declare abstract class Bot {
     public abstract markAsRead(room: string, packageName?: string): void;
 
     /**
-     * @deprecated Use events.eventName.clear() instead. It will make all of the custom events BROKEN until reload(compile).
+     * @warning It will make all of the custom events BROKEN until reload(compile).
      */
     public abstract removeAllListener(): void;
     /**
-     * @deprecated Use events.eventName.clear() instead. It will make the custom event that is eventName matches BROKEN until reload(compile).
+     * @warning It will make the custom event that is eventName matches BROKEN until reload(compile).
      */
     public abstract removeListener(eventName: string): void;
 
