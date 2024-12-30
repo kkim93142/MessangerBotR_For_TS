@@ -8,6 +8,8 @@ export class Game {
      * @description only lowercase
      */
     public static readonly commands: string[];
+    public static readonly commandDescription: string;
+    
     protected gameName: string;
 
     public getPlayers(): UserType[] {

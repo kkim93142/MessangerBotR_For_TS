@@ -2,11 +2,13 @@
 
 
 import { events } from "SDK/messangerbot/events";
-import { Game } from "Games/Game";
+import { Game } from "Examples/Games/Game";
+import { Command } from "Utils/command";
 
 export class UpdownGame extends Game {
     protected gameName: string = "Updown";
-    public static readonly commands: string[] = ["updown", "업다운"];
+    public static readonly commands: string[] = ["업다운", "updown"];
+    public static readonly commandDescription: string = "1부터 100까지의 랜덤한 숫자를 맞추는 게임";
 
     constructor(
         protected readonly commandObject: CommandType, 
@@ -85,11 +87,15 @@ events.command.on((obj)=> {
     if (UpdownGames[userHash]) UpdownGames[userHash].guess(Number(cmd));
 });
 
-events.onSpecificCommands(UpdownGame.commands, (obj)=> {
-    const user = obj.author;
+
+const command = new Command(UpdownGame.commands[0], UpdownGame.commandDescription).alias(UpdownGame.commands[1]);
+
+command.onExecute((ctx)=> {
+    const user = ctx.author;
     const userHash = user.hash;
 
     if (!userHash) return;
 
-    if (!UpdownGames[userHash]) UpdownGames[userHash] = new UpdownGame(obj, [user]);
+    if (!UpdownGames[userHash]) UpdownGames[userHash] = new UpdownGame(ctx, [user]);
 });
+

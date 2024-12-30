@@ -147,11 +147,10 @@ export namespace events {
      */
     export const notificationPosted = new Event<(statusBarNotification: android.service.notification.StatusBarNotification, SessionManager: sessionManager) => void>();
     export const startCompile = new Event<() => void>();
-    export const ILOVEYOU = "ILOVEYOUTOO!";
 
     /**
-     * Listen to a specific command(s) only
-     * @param listener You know! It's callback!
+     * @deprecated Use 'new Command()' instead! This will be removed soon!
+     * Listen to specific command(s) only
      */
     export function onSpecificCommands(specificCommands: string | string[], listener: (command: CommandType) => void): void {
         events.command.on((command: CommandType) => {
