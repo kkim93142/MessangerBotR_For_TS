@@ -1,4 +1,4 @@
-# MessangerBotR_For_TS
+# MessengerBotR_For_TS
 A base of MessangerBotR for typescript developers
 
 Entry Point = Modules/index.ts
